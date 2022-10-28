@@ -2,11 +2,12 @@ package fr.diginamic.errors;
 
 public class RecherchePopErrors extends Exception{
 
-	public RecherchePopErrors() {
+	public RecherchePopErrors(String message) {
+		
+		super(message);
+		
 	}
 	
 	
-	public String getPetitZero() {
-		return "chiffre < 0 ou minimum grand maximum ou lettres";
-	}
+
 }

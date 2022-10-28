@@ -33,7 +33,7 @@ public class RecherchePopulationBorneService extends MenuService {
 		int min =Integer.parseInt(saisieMin) * 1000;	
 		
 		if (min < 0) {
-			throw new RecherchePopErrors();  		
+			throw new RecherchePopErrors("le nombre doit etre un nombre entier positif ou nul");  		
 		}      
   
 	
@@ -42,20 +42,30 @@ public class RecherchePopulationBorneService extends MenuService {
 		String saisieMax = scanner.nextLine();	    
 		int max = Integer.parseInt(saisieMax) * 1000;	
 		if (max<0 || min>max) {		
-			throw new RecherchePopErrors();
+			throw new RecherchePopErrors("le nombre doit etre un nombre entier positif ou nul ou inferieur au maximum"  );
 		}
 		
 		
 		
 		
 		List<Ville> villes = rec.getVilles();
+		boolean depTrouve =false;
 		for (Ville ville : villes) {
 			if (ville.getCodeDepartement().equalsIgnoreCase(choix)) {
+				depTrouve=true;
 				if (ville.getPopulation() >= min && ville.getPopulation() <= max) {
 					System.out.println(ville);
 				}
 			}
 		}
+		
+		if (!depTrouve) {
+			
+			throw new RecherchePopErrors("le code departement existe plus");
+		}
+		
+		
+		
 	}
 
 }

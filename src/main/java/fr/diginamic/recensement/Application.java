@@ -73,7 +73,7 @@ public class Application {
 				try {
 					recherchePopBorne.traiter(recensement, scanner);
 		        } catch (RecherchePopErrors e) {		            
-		            System.out.println("Error message: " + e.getPetitZero());
+		            System.out.println("Error message: " + e.getMessage());
 		            b1=false;
 		        } catch (NumberFormatException nfe) {		            
 		            System.out.println("NumberFormat Exception: invalid input string");
